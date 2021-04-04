@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+{% block content %}
+{% if game.state_count <= 3 %}
+Set Your Answer:
+{% for element in game.answer[0:] %}
+{{element|join('')}}
+{% endfor %}
+{% if game.state_count == 3 %}
+{% endif %}
+<br><br>
+{% else %}
+{% if game.state_count == 4 %}
+****
+{% endif %}
+{% if game.state_count == 5 %}
+***
+{% endif %}
+{% if game.state_count == 6 %}
+**
+{% endif %}
+{% if game.state_count == 7 %}
+*
+{% endif %}
+<br>
+Count:
+{{ game.wrong_count }}
+<br>
+Answer:
+{% for element in game.answer[0:game.state_count-4] %}
+{{element|join('')}}
+{% endfor %}
+<br>
+{% endif %}
+<form action="/a-button/">
+    <input type="submit" value="A">
+</form>
+<form action="/b-button/">
+    <input type="submit" value="B">
+</form>
+<form action="/c-button/">
+    <input type="submit" value="C">
+</form>
+<form action="/d-button/">
+    <input type="submit" value="D">
+</form>
+{% endblock %}

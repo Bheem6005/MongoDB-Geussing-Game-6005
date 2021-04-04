@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{% block content %}
+<h1>You Win!</h1>
+Answer is
+{% for element in game.answer[0:] %}
+{{element|join('')}}
+{% endfor %}
+<br><br>
+<a href="{{ url_for('game') }}">Play again</a>
+<br>
+<a href="{{ url_for('index') }}">Return to index</a>
+{% endblock %}
